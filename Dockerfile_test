@@ -1,0 +1,12 @@
+FROM albertoleal/wily
+MAINTAINER Alberto Leal <albertonb@gmail.com>
+
+RUN apt-get update && apt-get install -y \
+	--no-install-recommends \
+	iptables
+
+RUN set -x \
+  && go get github.com/onsi/ginkgo/ginkgo \
+  && go get github.com/onsi/gomega
+
+WORKDIR $GOPATH/src/github.com/albertoleal/iptables/
